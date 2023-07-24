@@ -3,6 +3,13 @@ nav {
   justify-content: space-between;
   padding: 0 24px;
   border-bottom: 1px solid var(--very-light-pink);
+  background-color: var(--white);
+  height: 60px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: unset;
+  position: fixed;
 }
 .menu {
   display: none;
@@ -45,6 +52,7 @@ nav {
   cursor: pointer;
 }
 .navbar-shopping-cart {
+ 
   position: relative;
   cursor: pointer;
 }
@@ -65,6 +73,8 @@ nav {
 @media (max-width: 640px) {
   .menu {
     display: block;
+    width: 25px;
+    height: 60px;
   }
   .navbar-left ul {
     display: none;
@@ -72,4 +82,5 @@ nav {
   .navbar-email {
     display: none;
   }
+ 
 }
