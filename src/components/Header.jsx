@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext,useEffect} from "react";
 import  "@styles/Header.scss";
 import Menu from '@components/Menu';
 import MyOrder from '@containers/MyOrder';
@@ -14,10 +14,20 @@ const Header = () => {
 
   const handleToggle = () => {
     setToggle(!toggle);
+
+    if(toogleOrders) {
+        setToggleOrders(!toogleOrders);
+    }
+
   }
   const totalItems = state.cart.map(item => item.cantidad).reduce((acumulador, numero) => acumulador + numero, 0)
 
- 
+  useEffect(() => {
+    if (state.cart.length === 0 ) {
+        setToggleOrders(false);
+        console.log("HELLO")
+    }
+  }, [state.cart.length]);
 
 
   return (
@@ -52,7 +62,10 @@ const Header = () => {
     <div className="navbar-right">
         <ul>
             <li className="navbar-email" onClick={handleToggle}>platzi@example.com</li>
-            <li className="navbar-shopping-cart" onClick= { () => state.cart.length > 0 && setToggleOrders(!toogleOrders)}>
+            <li className="navbar-shopping-cart" 
+            onClick= { () => state.cart.length > 0 && setToggleOrders(!toogleOrders) 
+            ||toggle  && state.cart.length > 0 && setToggle(false)}
+            >
                 <img src = {shoppinCart} alt="shopping cart"  />
                 {state.cart.length > 0 ?<div>{totalItems}</div> : null}
             </li>
