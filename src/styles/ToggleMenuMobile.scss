@@ -1,0 +1,53 @@
+@import 'vars';
+
+.ToggleMenu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: var(--white);
+    height: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+}
+.ToggleMenu h3 {
+    font-size: var(--md);
+}
+
+.ToggleMenu ul {
+    padding: 0;
+    margin: 24px 0 0;
+    list-style: none;
+    font-size: var(--md);
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.ToggleMenu .Menu {
+    display: block;
+    width: auto;
+    height: auto;
+    border:none;
+    border-radius: none;
+    padding:0;
+    position: static;
+    top: 60px;
+    right: 50px;
+}
+.ToggleMenu .Menu ul li {
+    text-align: start;
+    
+}
+.ToggleMenu .Menu ul li a  {
+    font-size: var(--md);
+    margin-bottom: 0px;
+    
+}
+
+.ToggleMenu .Menu ul li:last-child {
+    padding-top: 0px;
+    border-top: none;
+}

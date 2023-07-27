@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ProductItem from '@components/ProductItem';
-import useGetProducts from '@hooks/useGetProduct';
 import '@styles/ProductList.scss';
-
+import { ProductContext } from '../context/ProductContext';
 
 const API = 'https://api.escuelajs.co/api/v1/products';
 
 
+
 const ProductList = () => {
-	const products = useGetProducts(API);
+	const { products } = useContext(ProductContext);
 	return (
 		<section className="main-container">
 			<div className="ProductList">
@@ -21,3 +21,7 @@ const ProductList = () => {
 }
 
 export default ProductList;
+
+
+
+

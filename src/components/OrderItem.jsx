@@ -15,9 +15,9 @@ const OrderItem = ({product}) => {
 			<figure>
 				<img src= {product.images[0]} alt={product.title} />
 			</figure>
-			<p>{product.title}</p>
+			<p> {product.cantidad} {product.title}</p>
 			<p>${product.price * product.cantidad}</p>
-			<img src={iconClose} alt="close" onClick={() => handleRemove(product)} />
+			<img className='item-addToCart' src={iconClose} alt="close" onClick={() => handleRemove(product)} />
 		</div>
 	);
 }

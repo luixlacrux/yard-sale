@@ -23,3 +23,11 @@
 	font-size: var(--md);
 	font-weight: bold;
 }
+.item-addToCart {
+  cursor: pointer;
+  filter: brightness(0.0);
+}
+
+.item-addToCart:hover{
+	filter: invert(7%) sepia(71%) saturate(6291%) hue-rotate(358deg) brightness(98%) contrast(97%);
+}

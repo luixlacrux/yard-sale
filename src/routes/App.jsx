@@ -11,17 +11,22 @@ import MyAccount from '../pages/MyAccount';
 import CreateAccount from '../pages/CreateAccount';
 import Checkout from '../pages/Checkout';
 import Orders from '../pages/Orders'
-
 import NotFound from '../pages/NotFound';
 import AppContext from '@context/AppContext';
 import useInitialState from '@hooks/useInitialState';
 import '../styles/global.css'
 
+import { ProductContext, useGetProducts }  from '../context/ProductContext';
+
 
 
 const App = () => {
-    const initialState = useInitialState()
+    const initialState = useInitialState();
+    const API = 'https://api.escuelajs.co/api/v1/products';
+    const [products, setProducts,immutableProducts] = useGetProducts(API);
+
     return (
+        <ProductContext.Provider value={{ products,setProducts,immutableProducts }} >
         <AppContext.Provider value = {initialState}>
         <BrowserRouter>
             <Layout>
@@ -43,7 +48,7 @@ const App = () => {
           </Layout>
         </BrowserRouter>
         </AppContext.Provider>
-
+        </ProductContext.Provider>
         
    
     );
