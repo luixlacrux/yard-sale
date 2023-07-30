@@ -1,18 +1,31 @@
-import {useState} from 'react';
+import {useState } from 'react';
+import React from 'react';
 
-const initialState = {
+// const initialState = {
+//     cart: [],
+// }
+
+let initialState;
+const itemInLocalStorange = JSON.parse(localStorage.getItem("cart"));
+
+if(itemInLocalStorange) {
+  initialState = itemInLocalStorange;
+}
+else{
+  initialState = {
     cart: [],
+  }
 }
 
-
 const useInitialState = () => {
+  
     const [state, setState] = useState(initialState);
     const existItem = (itemId) => {
         return state.cart.some(item => item.id === itemId);
       };
     const addToCart =   (payload) => {
         const itemId = payload.id;
-      
+ 
     // Verificamos si el artículo ya está en el carrito
     const itemExist = existItem(itemId);
     if (itemExist) {
@@ -24,12 +37,16 @@ const useInitialState = () => {
             
           )
         }));
+   
+    
+
       } else {
         // Si el artículo no está en el carrito, lo agregamos con cantidad 1 utilizando el hook personalizado
         setState((prevState) => ({ ...prevState, cart: [...prevState.cart, { ...payload, cantidad: 1 }] }));
+  
       }
   
-console.log(state.cart)
+
 };
 
 const calcTotalPriceCart = () => {
@@ -44,7 +61,11 @@ const removeFromCart = (payload) => {
       ...state,
       cart: state.cart.filter(items => items.id !== payload.id),
     });
+
+ 
 }
+
+
 
     return {
         state,

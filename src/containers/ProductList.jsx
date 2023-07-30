@@ -3,8 +3,6 @@ import ProductItem from '@components/ProductItem';
 import '@styles/ProductList.scss';
 import { ProductContext } from '../context/ProductContext';
 
-const API = 'https://api.escuelajs.co/api/v1/products';
-
 
 
 const ProductList = () => {

@@ -8,9 +8,8 @@ import '@styles/MyOrder.scss';
 
 const MyOrder = () => {
 	const {state,calcTotalPriceCart} = useContext(AppContext);
-
-   const pageCheckout = () => {
-	window.location = "/checkout";
+    const pageCheckout = () => {
+	window.location = "/checkout"
    }
 
 	return (

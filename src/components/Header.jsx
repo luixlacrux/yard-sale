@@ -30,7 +30,7 @@ const Header = () => {
   useEffect(() => {
     if (state.cart.length === 0 ) {
         setToggleOrders(false);
-        console.log("HELLO")
+
     }
   }, [state.cart.length]);
   
