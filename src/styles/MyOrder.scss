@@ -11,7 +11,6 @@
 	background-color: white;
 	border-radius: 6px;
 	border: 1px solid  var(--very-light-pink);
-
 }
 
 .my-order-products{
@@ -21,15 +20,16 @@
 	flex-direction: column;
 }
 
-  
 
 
 .title-container {
 	display: flex;
+	align-items: baseline;
 }
 .title-container img {
 	transform: rotate(180deg);
 	margin-right: 14px;
+	cursor: pointer;
 }
 .title {
 	font-size: var(--lg);
@@ -68,6 +68,12 @@
 	font-size: var(--md);
 	font-weight: bold;
 	height: 50px;
+}
+.primary-button:hover{
+	background-color: #75C5B1;
+}
+.primary-button:active{
+	background-color: #77A27D;
 }
 @media (max-width: 640px) {
 	.MyOrder {

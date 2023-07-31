@@ -11,9 +11,10 @@ const {addToCart, state} = useContext(AppContext);
 		addToCart(item);
 	}
 
-	//actualizamos localstorange cada vez que el estado
+	//actualizamos localstorange cada vez que el estado 
  useEffect(()=> {
-	localStorage.setItem('cart',JSON.stringify(state));
+		localStorage.setItem('cart',JSON.stringify(state));
+
  }, [state]);
 
 		

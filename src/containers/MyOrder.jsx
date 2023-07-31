@@ -6,7 +6,7 @@ import arrow  from '@icons/flechita.svg'
 import '@styles/MyOrder.scss';
 
 
-const MyOrder = () => {
+const MyOrder = ({event}) => {
 	const {state,calcTotalPriceCart} = useContext(AppContext);
     const pageCheckout = () => {
 	window.location = "/checkout"
@@ -15,7 +15,7 @@ const MyOrder = () => {
 	return (
 		<aside className="MyOrder">
 			<div className="title-container">
-				<img src= {arrow} alt="arrow" />
+				<img src= {arrow} alt="arrow" onClick={ () => event(false)}/>
 				<p className="title">My order</p>
 			</div>
 			

@@ -10,6 +10,7 @@ nav {
   right: 0;
   bottom: unset;
   position: fixed;
+  z-index: 1;
 }
 .menu {
   display: none;
@@ -26,6 +27,7 @@ nav {
   display: flex;
   align-items: center;
   height: 60px;
+  gap: 5px;
 }
 .navbar-left {
   display: flex;
@@ -86,3 +88,13 @@ nav {
   }
  
 }
+.navbar-left ul li a.active {
+  border: 1px solid var(--hospital-green);
+  color: var(--hospital-green);
+}
+
+
+
+
+
+

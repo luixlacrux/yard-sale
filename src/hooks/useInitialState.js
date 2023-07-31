@@ -14,6 +14,7 @@ if(itemInLocalStorange) {
 else{
   initialState = {
     cart: [],
+  
   }
 }
 
@@ -65,6 +66,30 @@ const removeFromCart = (payload) => {
  
 }
 
+const addLocalStorange = () => {
+  const dataLocalstorange = JSON.parse(localStorage.getItem("cart"));
+  const newObj = {...state.cart};
+  if(dataLocalstorange.ordenes) {
+    const newOrdenes = [...state.ordenes,[...state.cart]];
+   
+
+		//si ya hay ordenes respetamos la anteriores
+		localStorage.setItem('cart',JSON.stringify({
+			cart: [],
+			ordenes: newOrdenes
+    }));
+
+	//de lo contrario agregamos al objecto una propiedad ordenes	
+	} 
+
+  else{
+    localStorage.setItem('cart',JSON.stringify({
+			cart: [],
+			ordenes: [...state.cart]
+    }));
+  }
+
+}
 
 
     return {
@@ -72,6 +97,7 @@ const removeFromCart = (payload) => {
         addToCart,
         removeFromCart,
         calcTotalPriceCart,
+        addLocalStorange,
     }
 
 }

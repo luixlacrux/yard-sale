@@ -1,11 +1,16 @@
-import React, { useContext, useEffect} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import AppContext from "@context/AppContext";
+import { AiOutlineLoading } from 'react-icons/ai';
+import {BsFillPatchCheckFill} from 'react-icons/bs';
 import arrow  from '@icons/flechita.svg'
 import '@styles/Checkout.scss';
 
-const Checkout = () => {
-const {calcTotalPriceCart,state} = useContext(AppContext);
 
+const Checkout = () => {
+const {calcTotalPriceCart,state,addLocalStorange} = useContext(AppContext);
+const [isButtonClicked, setIsButtonClicked] = useState(false);
+const [isLoading, setIsLoading] = useState(false);
+const [successPay, setSuccessPay] = useState(false);
 const itemsInCart = state;
 const totalItems = itemsInCart.cart.map(item => item.cantidad).reduce((acumulador, numero) => acumulador + numero, 0);
 
@@ -21,12 +26,33 @@ if(state.cart.length <= 0) {
 	history.back();
 }
 
+const handleButtonClick = (e) => {
+ setIsButtonClicked(true);
+ addLocalStorange ();
+ setIsLoading(true);
+
+ //simulamos un tiempo de espera para cerrar el spinner
+ setTimeout(() => {
+	e.target.style.display = "none"; //cerramos el botton
+	setSuccessPay(true); //mostramos que el pago fue exitoso
+  }, 2000);
+
+  //simulamos que el pago fue exitoso y no vamos a la pagina anterior
+  setTimeout(()=> {
+	history.back();
+	},5000)
+  
+
+}
+
+const payOrder = isButtonClicked ? undefined : handleButtonClick;
+
 	return (
 		<div className="Checkout">
           <div className="my-order-container">
 			<img src={arrow} alt="arrow"
 			className='my-order-container-arrow'
-			onClick={()=> {history.back()}}
+			onClick={()=> history.back()}
 			/>
       <h1 className="title">My order</h1>
 
@@ -50,9 +76,17 @@ if(state.cart.length <= 0) {
 	   </div>
 
 		})}
-
-        
       </div>
+	  <button className='checkout-my-order' onClick={payOrder}>
+	  {isLoading ? <AiOutlineLoading className="spinner" /> : 'Pay Now'}
+	  </button>
+	  {successPay && (
+        <div className='success-my-order'>
+          <p>Hemos recibido su pago</p>
+          <BsFillPatchCheckFill className='BsFillPatchCheckFill' />
+        </div>
+      )}
+	
     </div>
 		</div>
 	);
