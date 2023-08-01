@@ -1,4 +1,5 @@
 import {useState } from 'react';
+import axios from 'axios';
 
 
 // const initialState = {
@@ -78,7 +79,8 @@ const addLocalStorange = () => {
 		//si ya hay ordenes respetamos la anteriores
 		localStorage.setItem('cart',JSON.stringify({
 			cart: [],
-			ordenes: newOrdenes
+			ordenes: newOrdenes,
+      user:state?.user,
     }));
 
 	//de lo contrario agregamos al objecto una propiedad ordenes	
@@ -87,20 +89,30 @@ const addLocalStorange = () => {
   else{
     localStorage.setItem('cart',JSON.stringify({
 			cart: [],
-			ordenes: [[...state.cart]]
+			ordenes: [[...state.cart]],
+      user:state?.user,
     }));
   }
 
 }
 
+const getInfoProfile = async() => {
+if(state.user) 
+{
+  const response = await axios(`https://api.escuelajs.co/api/v1/users/${state.user}`);
+  return response.data;
+}
 
+
+}
     return {
         state,
         addToCart,
         removeFromCart,
         calcTotalPriceCart,
         addLocalStorange,
-        totalItems
+        totalItems,
+        getInfoProfile,
     }
 
 }

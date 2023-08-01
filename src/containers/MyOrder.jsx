@@ -4,12 +4,18 @@ import OrderItem from '@components/OrderItem';
 import AppContext from '@context/AppContext'
 import arrow  from '@icons/flechita.svg'
 import '@styles/MyOrder.scss';
+import { redirect } from 'react-router-dom';
 
 
 const MyOrder = ({event}) => {
 	const {state,calcTotalPriceCart} = useContext(AppContext);
-    const pageCheckout = () => {
-	window.location = "/checkout"
+    const redirect = () => {
+	if(state?.user) {
+		window.location = '/checkout';
+	}
+	else{
+        window.location = '/login';
+	}
    }
 
 	return (
@@ -31,7 +37,7 @@ const MyOrder = ({event}) => {
 					</p>
 					<p>${calcTotalPriceCart(state.cart)}</p>
 				</div>
-				<button className="primary-button" onClick={pageCheckout}>
+				<button className="primary-button" onClick={redirect}>
 					Checkout
 				</button>
 			</div>

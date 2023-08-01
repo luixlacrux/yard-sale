@@ -14,10 +14,6 @@ const Checkout = () => {
   const [successPay, setSuccessPay] = useState(false);
   const itemsInCart = state;
 
-  // const totalItems = itemsInCart.cart
-  //   .map((item) => item.cantidad)
-  //   .reduce((acumulador, numero) => acumulador + numero, 0);
-
   //compartimos las actualizacion del estado
   //que tiene nuestro componente hacia localStorage
   useEffect(() => {

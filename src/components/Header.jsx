@@ -13,9 +13,19 @@ import ToggleMenuMobile from '@components/ToggleMenuMobile'
 const Header = () => {
   const [toggle,setToggle] = useState(false);
   const [toogleOrders, setToggleOrders] = useState(false);
-  const {state} = useContext(AppContext);
+  const {state,getInfoProfile} = useContext(AppContext);
   const [toggleMenuMobile,setToggleMenuMobile] = useState(false);
+  const [profile, setProfile] = useState("");
   
+  const userData = async() => {
+  const result = await getInfoProfile();
+  setProfile(result);
+  }
+  useEffect (()=> {
+    userData();
+  }, []);
+
+
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -49,34 +59,13 @@ const Header = () => {
 
     <div className="navbar-left">
         <img src={logo} alt="logo" className="nav-logo" />
-       
        <Category/>
-
-        {/* <ul>
-            <li>
-                <a href="/ALL">All</a>
-            </li>
-            <li>
-                <a href="/">Clothes</a>
-            </li>
-            <li>
-                <a href="/">Electronics</a>
-            </li>
-            <li>
-                <a href="/">Furnitures</a>
-            </li>
-            <li>
-                <a href="/">Toys</a>
-            </li>
-            <li>
-                <a href="/">Others</a>
-            </li>
-        </ul> */}
     </div>
 
     <div className="navbar-right">
         <ul >
-            <li className="navbar-email" onClick={handleToggle}>platzi@example.com</li>
+        {state.user ? (<li className="navbar-email" onClick={handleToggle}> {profile.email} </li>): null}
+
             <li className="navbar-shopping-cart" 
             onClick= { () => state.cart.length > 0 && setToggleOrders(!toogleOrders) 
             ||toggle  && state.cart.length > 0 && setToggle(false)
