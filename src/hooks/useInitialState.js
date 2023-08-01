@@ -1,5 +1,5 @@
 import {useState } from 'react';
-import React from 'react';
+
 
 // const initialState = {
 //     cart: [],
@@ -50,12 +50,14 @@ const useInitialState = () => {
 
 };
 
-const calcTotalPriceCart = () => {
-    return state.cart.reduce((total, item) => total + item.price * item.cantidad, 0);
+const calcTotalPriceCart = (array) => {
+    return array.reduce((total, item) => total + item.price * item.cantidad, 0);
   };
 
-
-
+  const totalItems = (array) => {
+    return array.map((item) => item.cantidad).reduce((acumulador, numero) => 
+     acumulador + numero, 0);
+  }
 
 const removeFromCart = (payload) => {
     setState({
@@ -85,7 +87,7 @@ const addLocalStorange = () => {
   else{
     localStorage.setItem('cart',JSON.stringify({
 			cart: [],
-			ordenes: [...state.cart]
+			ordenes: [[...state.cart]]
     }));
   }
 
@@ -98,6 +100,7 @@ const addLocalStorange = () => {
         removeFromCart,
         calcTotalPriceCart,
         addLocalStorange,
+        totalItems
     }
 
 }

@@ -6,9 +6,10 @@
 	display: grid;
 	place-items: center;
 }
-.title {
-	font-size: var(--lg);
-	margin-bottom: 40px;
+
+.Orders-container .titles{
+	font-size: 10px;
+	text-align: center;
 }
 .Orders-container {
 	display: grid;

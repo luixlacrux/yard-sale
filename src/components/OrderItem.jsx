@@ -4,7 +4,7 @@ import '@styles/OrderItem.scss';
 import iconClose from '@icons/icon_close.png'
 
 const OrderItem = ({product}) => {
-	const {removeFromCart,state} = useContext(AppContext);
+	const {removeFromCart} = useContext(AppContext);
 
 	const handleRemove = product => {
 		removeFromCart(product);

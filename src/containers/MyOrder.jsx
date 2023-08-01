@@ -29,7 +29,7 @@ const MyOrder = ({event}) => {
 					<p>
 						<span>Total</span>
 					</p>
-					<p>${calcTotalPriceCart()}</p>
+					<p>${calcTotalPriceCart(state.cart)}</p>
 				</div>
 				<button className="primary-button" onClick={pageCheckout}>
 					Checkout
