@@ -95,7 +95,7 @@ const Login = () => {
           <button type="submit" className="primary-button login-button">
             Login
           </button>
-          <a href="/">Forgot my password</a>
+          <a href="/password-recovery">Forgot my password</a>
         </form>
         <button
           className="secondary-button signup-button"

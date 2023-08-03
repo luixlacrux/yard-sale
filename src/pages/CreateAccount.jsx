@@ -120,7 +120,9 @@ const CreateAccount = () => {
             disabled={isClicked}
           />
         </form>
-        {showMessage && <ErrorMessage message={showMessage} />}
+   
+      {showMessage && <ErrorMessage message={showMessage} />}
+      
       </div>
     </div>
   );
