@@ -64,7 +64,7 @@ const Header = () => {
 
     <div className="navbar-right">
         <ul >
-        {state.user ? (<li className="navbar-email" onClick={handleToggle}> {profile.email} </li>): null}
+        {state.user? (<li className="navbar-email" onClick={handleToggle}> {profile.email} </li>): null}
 
             <li className="navbar-shopping-cart" 
             onClick= { () => state.cart.length > 0 && setToggleOrders(!toogleOrders) 

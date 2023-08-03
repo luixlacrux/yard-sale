@@ -52,7 +52,7 @@ const CreateAccount = () => {
       console.error("Error al enviar los datos:", error.message);
     } finally {
       //repuesta exitosa enviame a login
-      window.location = "/login";
+      window.location = "/send-email";
     }
   };
 

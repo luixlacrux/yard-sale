@@ -53,6 +53,8 @@
 .resend a {
 	color: var(--hospital-green);
 	text-decoration: none;
+	margin-inline-start: 10px;
+	cursor: pointer;
 }
 .primary-button {
 	background-color: var(--hospital-green);

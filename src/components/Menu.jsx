@@ -34,7 +34,7 @@ const Menu = () => {
           </a>
         </li>
         <li>
-          <a href="/">My account</a>
+          <a href="/account">My account</a>
         </li>
         <li>
           <a onClick={signOut}>Sign out</a>
