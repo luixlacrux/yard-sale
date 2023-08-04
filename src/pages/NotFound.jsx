@@ -1,9 +1,10 @@
 import React from 'react';
+import '@styles/NotFound.scss'
 
 const NotFound = () => {
     return (
-        <div>
-        No encontrado, error 404. 
+        <div className='NotFound'>
+        <span>No Encotrado 404</span>
        </div> 
     );
 }

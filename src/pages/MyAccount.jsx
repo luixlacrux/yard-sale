@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import '@styles/MyAccount.scss';
 import AppContext from '@context/AppContext';
 import axios from 'axios';
-
+const API = process.env.API;
 
 const MyAccount =  () => {
 	const {state} = useContext(AppContext);
@@ -13,7 +13,7 @@ const MyAccount =  () => {
 
 	useEffect(()=> {
 		const  getData =  async  ()=> {
-			const response = await axios(`https://api.escuelajs.co/api/v1/users/${state.user}`);
+			const response = await axios(`${API}/users/${state.user}`);
 			const {email,name} = response.data;
 			setName(name);
 			setEmail(email);
@@ -40,7 +40,7 @@ const MyAccount =  () => {
 		}
 		else{
         try{
-			const response = await axios.put(`https://api.escuelajs.co/api/v1/users/${state.user}`,
+			const response = await axios.put(`${API}/users/${state.user}`,
 			{
 				"email": email,
 				"name": name

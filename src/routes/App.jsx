@@ -18,12 +18,11 @@ import '../styles/global.css'
 
 import { ProductContext, useGetProducts }  from '../context/ProductContext';
 
-
+const API = process.env.API;
 
 const App = () => {
     const initialState = useInitialState();
-    const API = 'https://api.escuelajs.co/api/v1/products';
-    const [products, setProducts,immutableProducts] = useGetProducts(API);
+    const [products, setProducts,immutableProducts] = useGetProducts(`${API}/products`);
 
     return (
         <ProductContext.Provider value={{ products,setProducts,immutableProducts }} >
@@ -41,8 +40,7 @@ const App = () => {
 			    <Route exact path="/signup" Component={CreateAccount} />
 				<Route exact path="/checkout" Component={Checkout} />
 				<Route exact path="/orders" Component={Orders} />
-
-                <Route path="*" Component ={NotFound}/>
+                <Route path="/*" Component ={NotFound}/>
         
           </Routes>
           </Layout>

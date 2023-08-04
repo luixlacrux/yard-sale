@@ -5,16 +5,19 @@ import { GrClose } from "react-icons/gr";
 import "@styles/Orders.scss";
 
 const Orders = () => {
-  const { state,totalItems,calcTotalPriceCart} = useContext(AppContext);
+  const { state, totalItems, calcTotalPriceCart } = useContext(AppContext);
 
   return (
     <div className="Orders">
-      <GrClose  onClick={()=> {window.location= "/"}}/>
+      <GrClose
+        onClick={() => {
+          window.location = "/";
+        }}
+      />
       <div className="Orders-container">
         <h3 className="Orders-title">My orders</h3>
 
         {state.ordenes.map((orders, ordersIndex) => (
-          
           <div className="Orders-content" key={ordersIndex}>
             <div className="Order-info">
               <p>

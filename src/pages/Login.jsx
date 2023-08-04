@@ -4,6 +4,7 @@ import ErrorMessage from "@components/ErrorMessage";
 import AppContext from "@context/AppContext";
 import "@styles/Login.scss";
 import logo from "@logos/logo_yard_sale.svg";
+const API = process.env.API;
 
 const Login = () => {
   const { state } = useContext(AppContext);
@@ -41,7 +42,7 @@ const Login = () => {
 
   const getUser = async (data) => {
     try {
-      const response = await axios("https://api.escuelajs.co/api/v1/users");
+      const response = await axios(`${API}/users`);
       const user = response.data.find((user) => user.email === data.email);
       if (user) {
         // Si el correo electrónico existe, verificamos la contraseña

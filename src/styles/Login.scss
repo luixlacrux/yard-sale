@@ -5,6 +5,7 @@
 	height: 100vh;
 	display: grid;
 	place-items: center;
+
 }
 .Login-container {
 	display: grid;
@@ -23,6 +24,7 @@
 }
 .form a {
 	color: var(--hospital-green);
+	font-weight: bolder;
 	font-size: var(--sm);
 	text-align: center;
 	text-decoration: none;

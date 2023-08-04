@@ -4,7 +4,7 @@ import axios from "axios";
 // const initialState = {
 //     cart: [],
 // }
-
+const API = process.env.API;
 let initialState;
 const itemInLocalStorange = JSON.parse(localStorage.getItem("cart"));
 
@@ -92,7 +92,7 @@ const useInitialState = () => {
   const getInfoProfile = async () => {
     if (state.user) {
       const response = await axios(
-        `https://api.escuelajs.co/api/v1/users/${state.user}`
+        `${API}/users/${state.user}`
       );
       return response.data;
     }

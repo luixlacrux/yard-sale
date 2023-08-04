@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import axios from "axios";
 import "@styles/CreateAccount.scss";
 import ErrorMessage from "@components/ErrorMessage";
+const API = process.env.API;
 
 const CreateAccount = () => {
   const form = useRef(null);
@@ -31,7 +32,7 @@ const CreateAccount = () => {
   };
 
   const checkAvailableEmail = async (data) => {
-    const response = await axios("https://api.escuelajs.co/api/v1/users");
+    const response = await axios(`${API}/users`);
     const emailUse = response.data.some((item) => item.email === data.email);
     //si el correo no esta hacemos el registo
     if (!emailUse) {
@@ -45,7 +46,7 @@ const CreateAccount = () => {
   const sendData = async (data) => {
     try {
       const response = await axios.post(
-        "https://api.escuelajs.co/api/v1/users/",
+        `${API}/users`,
         data
       );
     } catch (error) {
@@ -120,8 +121,9 @@ const CreateAccount = () => {
             disabled={isClicked}
           />
         </form>
-   
-      {showMessage && <ErrorMessage message={showMessage} />}
+       <div className="show-error-register">
+        {!isClicked && <ErrorMessage message={showMessage} />}
+       </div>
       
       </div>
     </div>
