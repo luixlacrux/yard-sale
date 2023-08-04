@@ -65,7 +65,7 @@ module.exports = {
         new MiniCssExtractPlugin ({
             filename: '[name].css'
         }),
-        new Dotenv(),
+        new Dotenv({ systemvars: true }),
     ],
 
     devServer: {
